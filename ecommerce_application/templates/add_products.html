@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Product</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f6f9;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            margin:0;
+        }
+
+        .form-container{
+            background:white;
+            padding:30px;
+            border-radius:12px;
+            width:350px;
+            box-shadow:0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-container h2{
+            text-align:center;
+            margin-bottom:20px;
+        }
+
+        input, select{
+            width:100%;
+            padding:10px;
+            margin:8px 0;
+            border:1px solid #ccc;
+            border-radius:6px;
+            font-size:14px;
+        }
+
+        input:focus, select:focus{
+            border-color:#007bff;
+            outline:none;
+        }
+
+        input[type="submit"]{
+            background:#007bff;
+            color:white;
+            border:none;
+            cursor:pointer;
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        input[type="submit"]:hover{
+            background:#0056b3;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="form-container">
+    <h2>Add Product</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+
+        <!-- SubCategory Dropdown -->
+        <select name="subcategory" required>
+            <option value="">Select SubCategory</option>
+            {% for s in subcateg %}
+            <option value="{{s.id}}">
+                {{s.name}}
+            </option>
+            {% endfor %}
+        </select>
+
+        <input type="text" placeholder="Product Name" name="name_products" required>
+        <input type="text" placeholder="Description" name="name_desc" required>
+        <input type="number" placeholder="Price" name="name_price" required>
+        <input type="file" name="name_image" required>
+        <input type="text" placeholder="Discount" name="name_discound" required>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+</body>
+</html>

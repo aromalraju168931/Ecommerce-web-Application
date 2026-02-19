@@ -1,0 +1,123 @@
+<html>
+    <head>
+        <style>
+            /* NAVBAR */
+.navbar{
+background:#0f172a;
+position:sticky;
+top:0;
+z-index:9999;
+}
+
+.navbar-brand{
+font-weight:bold;
+font-size:22px;
+color:white!important;
+}
+
+.nav-link{
+color:#e5e7eb!important;
+font-weight:500;
+}
+
+.search-box{
+width:400px;
+position:relative;
+}
+
+.search-box input{
+width:100%;
+padding:10px 40px 10px 12px;
+border-radius:8px;
+border:none;
+}
+
+.search-box span{
+position:absolute;
+right:10px;
+top:8px;
+}
+
+/* PROFILE */
+.avatar{
+width:38px;
+height:38px;
+background:#6366f1;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg">
+<div class="container">
+
+<a class="navbar-brand" href="#">🛍️ MegMar</a>
+
+<button class="navbar-toggler bg-light" data-bs-toggle="collapse" data-bs-target="#navMenu">☰</button>
+
+<div class="collapse navbar-collapse" id="navMenu">
+
+<ul class="navbar-nav me-auto ms-3">
+<li class="nav-item"><a class="nav-link" href="{% url 'index_page' %}">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'cart_view' %}">Cart</a></li>
+</ul>
+<form method="GET" action="{% url 'index_page' %}">
+    {%csrf_token %}
+<div class="search-box me-3">
+<input type="text" placeholder="Search products..." name="q" value="{{q}}">
+<span><button type="submit" style="background: none; border: none;">🔍</button></span>
+</form>
+</div>
+
+<div class="dropdown">
+
+    <!-- Avatar Button -->
+    <div class="avatar rounded-circle bg-primary text-white d-flex 
+                align-items-center justify-content-center"
+         style="width:40px;height:40px;cursor:pointer;"
+         data-bs-toggle="dropdown">
+
+        {{ request.session.user|default:"P"|first|upper }}
+
+    </div>
+
+    <!-- Dropdown Menu -->
+    <ul class="dropdown-menu dropdown-menu-end shadow">
+
+        <li>
+            <a class="dropdown-item" href="{% url 'profile_view' %}">
+                👤 My Account
+            </a>
+        </li>
+
+        <li>
+            <a class="dropdown-item" href="{% url 'user_reg' %}">
+                📝 Register Account
+            </a>
+        </li>
+
+        <li><hr class="dropdown-divider"></li>
+
+        <li>
+            <a class="dropdown-item text-danger" href="#">
+                🗑 Delete Account
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+
+</div>
+</div>
+</nav>
+    </body>
+</html>

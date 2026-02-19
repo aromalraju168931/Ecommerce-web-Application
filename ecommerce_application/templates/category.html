@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Category</title>
+
+    <style>
+        .body1{
+            font-family: Arial, sans-serif;
+            background:#f4f6f9;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            margin:0;
+        }
+
+        .form-container{
+            background:white;
+            padding:30px;
+            border-radius:12px;
+            width:320px;
+            box-shadow:0 8px 20px rgba(0,0,0,0.1);
+            text-align:center;
+        }
+
+        h2{
+            margin-bottom:20px;
+        }
+
+        input{
+            width:100%;
+            padding:10px;
+            margin:10px 0;
+            border:1px solid #ccc;
+            border-radius:6px;
+            font-size:14px;
+        }
+
+        input:focus{
+            border-color:#007bff;
+            outline:none;
+        }
+
+        button{
+            width:100%;
+            padding:10px;
+            background:#007bff;
+            color:white;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#0056b3;
+        }
+        #d1{
+            
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+
+<body class="body1">
+    
+
+<div class="form-container">
+    <h2>Add Category</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <input type="text" name="cat_name" placeholder="Category Name" required>
+
+        <div id="d1"><button type="submit">Add Category</button></div>
+        <button><a href="{% url 'index_page' %}" style="
+              color:white;
+              text-decoration:none;
+              border-radius:6px;
+              display:inline-block;
+              font-weight:bold;"> ← Back
+    </a></button>
+    </form>
+</div>
+
+</body>
+</html>
