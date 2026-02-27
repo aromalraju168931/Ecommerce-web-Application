@@ -56,7 +56,7 @@ def otp_login(request):
         send_mail(
             "OTP Verification for MegMar ..! Do not share",
             f"Your OTP is {otp}",
-            "gouthamvikhneshwaran@gmail.com",
+            "example_mail@gmail.com",
             [email],
             fail_silently=False
         )
